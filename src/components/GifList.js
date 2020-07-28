@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 export default class GifList extends Component {
     render() {
 
-        let list = this.props.listOfGifs.map((gif) => {
-            return <li>{gif}</li>
+        let list = this.props.listOfGifs.map((gif, index) => {
+            return <li key={index}><img  src={gif}/></li>
         })
         return (
             

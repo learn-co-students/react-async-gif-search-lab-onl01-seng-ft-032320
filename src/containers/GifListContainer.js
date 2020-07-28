@@ -11,6 +11,7 @@ export default class GifListContainer extends Component {
     }
 
     handleSubmit = (event) => {
+        event.preventDefault()
         let searchValue = event.target.querySelector("input").value
         this.setState({
             gifs: []
@@ -21,22 +22,25 @@ export default class GifListContainer extends Component {
         .then(response => response.json())
         .then(data => {
 
-            this.setState({
-                gifs: data.map(gif => gif.image.original.url)
-            })
-            console.log(this.state.gifs)
-            // for(let i = 0; i < 3; i++) {
-            //     tempArray.push(data.images.original.url)
-            // }
-
             // this.setState({
-            //     gifs: tempArray
+            //     gifs: data.data.map(gif => {gif.images.original.url
+            //     })
             // })
+            
+            for(let i = 0; i < 3; i++) {
+                tempArray.push(data.data[i].images.original.url)
+            }
+
+            this.setState({
+                gifs: tempArray
+            })
         })
+        
     }
     
 
     render() {
+        console.log(this.state.gifs)
         return (
             <div>
                 <GifList listOfGifs={this.state.gifs}/>
