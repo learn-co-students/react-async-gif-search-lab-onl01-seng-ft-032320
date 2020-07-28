@@ -12,7 +12,7 @@ export default class GifListContainer extends React.Component {
         fetch(`https://api.giphy.com/v1/gifs/search?q=${value}&api_key=VrYo1il2SlFEfH7TqwZHphbS4io20TAa&rating=g&limit=3`)
             .then(resp => resp.json())
             .then(({ data }) => {
-                this.setState({ photos: data.map(gif => ({ url: gif.images.original.url })) })
+                this.setState({ photos: data.map(obj => obj) })
             })
     }
 
